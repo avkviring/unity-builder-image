@@ -8,3 +8,4 @@ RUN apt-get update
 RUN apt-get install -y docker-ce-cli 
 RUN apt-get install -y npm
 COPY scripts scripts/
+RUN chmod +x scripts/unit-test.sh
