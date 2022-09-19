@@ -1,4 +1,4 @@
-FROM unityci/editor:2021.3.4f1-base-1
+FROM unityci/editor:ubuntu-2021.3.6f1-linux-il2cpp-1
 RUN apt-get update
 RUN apt-get install -y default-jre libsaxonb-java
 RUN apt-get install -y ca-certificates curl gnupg lsb-release
