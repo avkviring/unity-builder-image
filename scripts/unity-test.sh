@@ -17,7 +17,9 @@ UNITY_EXIT_CODE=$?
 echo "Unity exit code $UNITY_EXIT_CODE"
 if [ $UNITY_EXIT_CODE -eq 0 ]; then
   echo "Run succeeded, no failures occurred";
-  saxonb-xslt -s $UNITY_DIR/$TEST_PLATFORM-results.xml -xsl /scripts/nunit3-junit.xslt >$UNITY_DIR/$TEST_PLATFORM-junit-results.xml
+  if test -f "$UNITY_DIR/$TEST_PLATFORM-results.xml"; then
+      saxonb-xslt -s $UNITY_DIR/$TEST_PLATFORM-results.xml -xsl /scripts/nunit3-junit.xslt >$UNITY_DIR/$TEST_PLATFORM-junit-results.xml
+  fi
 elif [ $UNITY_EXIT_CODE -eq 2 ]; then
   echo "Run succeeded, some tests failed";
   if [ $TESTING_TYPE == 'JUNIT' ]; then
@@ -36,5 +38,4 @@ else
   fi
 fi
 
-cat $UNITY_DIR/$TEST_PLATFORM-results.xml | grep test-run | grep Passed
 exit $UNITY_EXIT_CODE
