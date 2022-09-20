@@ -14,6 +14,7 @@ ${UNITY_EXECUTABLE:-xvfb-run --auto-servernum --server-args='-screen 0 640x480x2
   -nographics   
 
 UNITY_EXIT_CODE=$?
+echo "Unity exit code $UNITY_EXIT_CODE"
 if [ $UNITY_EXIT_CODE -eq 0 ]; then
   echo "Run succeeded, no failures occurred";
   saxonb-xslt -s $UNITY_DIR/$TEST_PLATFORM-results.xml -xsl /scripts/nunit3-junit.xslt >$UNITY_DIR/$TEST_PLATFORM-junit-results.xml
